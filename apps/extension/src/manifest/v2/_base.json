@@ -1,0 +1,33 @@
+{
+  "manifest_version": 2,
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_title": "Namada Extension"
+  },
+  "background": {
+    "scripts": ["background.namada.js"],
+    "persistent": true
+  },
+  "permissions": [
+    "storage",
+    "notifications",
+    "identity",
+    "*://github.com/*",
+    "*://objects.githubusercontent.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.namada.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": ["injected.namada.js", "assets/app.css"],
+  "icons": {
+    "16": "assets/icons/icon.png",
+    "32": "assets/icons/icon.png",
+    "48": "assets/icons/icon.png",
+    "128": "assets/icons/icon.png"
+  }
+}
